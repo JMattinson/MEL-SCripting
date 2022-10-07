@@ -1,0 +1,180 @@
+//Creates a new file, for easier testing
+file -f -new;
+
+global proc float AddFunct(float $num1,float $num2)
+{
+ $sum = ($num1 + $num2);
+ //FOR THE LOVE OF ALL THAT IS HOLY, WHY IS IT RETURNING THE INVERSE?!? I'M TOO TIRED TO TROUBLESHOOT THIS ANYMORE.
+ $sum = ($sum * -1);
+ 
+ return($sum);
+}
+global proc float SubFunct(float $num1,float $num2)
+{
+ print $num1;
+ print $num2;
+ $sum = ($num1 - $num2);
+ $sum = ($sum * -1);
+ 
+ return($sum);
+}
+global proc float MultFunct(float $num1,float $num2)
+{
+ $sum = ($num1 * $num2);
+ $sum = ($sum * -1);
+ 
+ return($sum);
+}
+global proc float DivFunct(float $num1,float $num2)
+{
+ $sum = ($num1 / $num2);
+ $sum = ($sum * -1);
+ 
+ return($sum);  
+}
+
+//These are leftovers from the first assignment.
+global proc PowFunct(float $nums[])
+{
+    print ("Calculating Powers...\n");
+    int $numSize = size($nums);
+    float $sol;
+    $sol = `pow $nums[0] $nums[1]`;
+    print ($sol);
+}
+global proc MeaFunct(float $nums[])
+{
+    print ("Calculating Mean...\n");
+    int $numSize = size($nums);
+    float $sol;
+    for ($i=0; $i<$numSize; ++$i)
+    {
+        $sol = $sol + $nums[$i];
+    }
+    $sol = $sol / $numSize;
+    print($sol);
+}
+global proc MedFunct(float $nums[])
+{
+    print ("Calculating Median...\n");
+    int $numSize = size($nums);
+    float $sortedNums[] =`sort $nums`;
+    
+    
+    if ($numSize % 2 !=0)
+    {
+        print (float($sortedNums[$numSize/2]));
+    }
+    else
+    {
+        $X = $sortedNums[(($numSize-1)/2)];
+        $Y = $sortedNums[($numSize/2)];
+        print(($X+$Y)/2);
+    }  
+}
+
+
+global proc float Calc(int $op1, int $op2,float $firstField, float $secondField)
+{
+    if ($op1 == 0)
+        $op1 = 4;
+        
+    int $op = ($op1);
+    
+    
+  $nums = {2.0, 3.0, 5.0, 7.0, 9.0, 20.0};
+  if ($op == 1)
+  {
+      return (AddFunct($firstField,$secondField));
+  }
+  else if ($op == 2)
+  {
+      return (SubFunct($firstField,$secondField));
+  }
+  else if ($op == 3)
+  {
+      return (MultFunct($firstField,$secondField));
+  }
+  else if ($op == 4)
+  {
+      return (DivFunct($firstField,$secondField));
+  }
+  else if ($op == 5)
+  {
+      PowFunct($nums);
+  }
+  else if ($op == 6)
+  {
+      MeaFunct($nums);
+  }
+  else if ($op == 7)
+  {
+      MedFunct($nums);
+  }
+  else
+  {
+      print("Please specify an operation between 1 and 7.");
+  }
+  
+}
+
+
+global proc Calc_ButtonCmd()
+{
+    string $firstField = `optionVar -q "firstField"`;
+    string $secondField = `optionVar -q "secondField"`;
+    string $opField1 = `optionVar -q "opField1"`;
+    
+    float $num1 = `floatField -q -value $firstField`;
+    float $num2 = `floatField -q -value $secondField`;
+    
+    string $opField2 = `optionVar -q "opField2"`;
+    string $resultsField = `optionVar -q "solutionField"`;
+    
+    string $oper1 = `radioButtonGrp -q -select $opField1`;
+    string $oper2 = 0;
+
+    float$result = -Calc($oper1,$oper2,$num1,$num2);
+    
+    
+    textField -e -text $result $resultsField;
+}
+
+global proc CalcUI()
+{
+    string $mWindow = "ToolWindow";
+    if (`window -exists $mWindow`)
+        deleteUI $mWindow;
+        
+    
+    $mWindow = `window -title "Calculator" 
+                              -height 300 
+                              -width 400 
+                              -sizeable 1
+                              -resizeToFitChildren 1
+                              $mWindow`;
+                              
+    string $numColumn = `columnLayout -adjustableColumn 1 
+                                      -parent $mWindow`;
+    string $opColumn = `columnLayout`;
+    
+    optionVar -stringValue "firstField"  `floatField`;
+    optionVar -stringValue "secondField" `floatField`;
+    
+    
+    
+    optionVar -stringValue "opField1" `radioButtonGrp -numberOfRadioButtons 4 - labelArray4 "Add" "Subtract" "Multiply" "Divide"`;
+    //optionVar -stringValue "opField2" `radioButtonGrp -numberOfRadioButtons 3 - labelArray3 "Power" "Mean" "Median"`;
+    
+    
+    button -label "Go!" -command "Calc_ButtonCmd";
+    
+    optionVar -stringValue "solutionField" `textField`;
+    showWindow $mWindow;
+}
+
+//This calls the UI
+CalcUI();
+
+
+

@@ -1,0 +1,33 @@
+//Creates a new file, mostly for easier testing
+file -f -new;
+
+//Dictates how many snowmen to make
+int $snowmen = 3;
+
+//declare the snowman's size, compute the size of the 2nd &3rd balls based on the size given
+float $size = 3;
+float $sizeMid = ($size /1.5);
+float $sizeSmall = ($size /2);
+
+//chooses where the snowman is created
+float $location[] = {0,0,0};
+
+
+//calculates the distance between balls on the snowman
+float $midDist = (($size * 2) + $sizeMid);
+float $smallDist = (($size * 2) + ($sizeMid * 2)+$sizeSmall);
+
+//Snowman creation algorithm
+for ( $i=0; $i<$snowmen; ++$i )
+{
+    polySphere -r $size -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+    move -r (($location[0] + $i) + ($i* 5)) ($location[1] + $size) $location[2] ;
+
+    polySphere -r $sizeMid -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+    move -r (($location[0] + $i) + ($i* 5)) ($location[1] + $midDist) $location[2] ;
+
+    polySphere -r $sizeSmall -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+    move -r (($location[0] + $i) + ($i* 5)) ($smallDist + $location[1]) $location[2] ;
+
+}
+

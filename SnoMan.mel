@@ -1,0 +1,54 @@
+//For some reason I thought the assignment was to make a snowman at first, that's why the name's weird.
+//I decided to make an ant. 
+sphere -radius 3 -name "Baller1";
+move  -relative 0 0 0;
+sphere -radius 2 -name "Baller2";
+move  -relative 0 4 0;
+sphere -radius 1.5 -name "Baller3";
+move  -relative 0 7 0;
+cone -name "Tooth1";
+scale .3 .3 .3;
+move -r 0 8.45 0.625934;  
+rotate -r -ws -fo 33.937007 0 97.209619;
+cone -name "Tooth2";
+scale .3 .3 .3;
+move -r 0 8.45 -0.625934;  
+rotate -r -ws -fo 33.937007 0 97.209619;
+sphere -radius .5 -name "EyeBaller1";
+move -r -0.604932 8.0 -0.813599 ;
+sphere -radius .5 -name "EyeBaller2";
+move -r -0.604932 8.0 0.813599 ;
+polyCylinder -name "RLeg1";
+scale -r 0.192055 2.585423 0.192055 ;
+move -r 0 2.015025 3.119452 ;
+rotate -r -ws -fo -52.302602 0 0 ;
+polyCylinder -name "RLeg2";
+scale -r 0.192055 3.872065 0.192055 ;
+move -r 0 4.015025 3.119452 ;
+rotate -r -ws -fo -88.615982 0 0 ;
+polyCylinder -name "RLeg3";
+scale -r 0.192055 3.872065 0.192055 ;
+move -r 0 6.015025 3.119452 ;
+rotate -r -ws -fo -117.286962 0 0 ;
+polyCylinder -name "LLeg1";
+scale -r 0.192055 2.585423 0.192055 ;
+move -r 0 2.015025 -3.119452 ;
+rotate -r -ws -fo 52.302602 0 0 ;
+polyCylinder -name "LLeg2";
+scale -r 0.192055 3.872065 0.192055 ;
+move -r 0 4.015025 -3.119452 ;
+rotate -r -ws -fo 88.615982 0 0 ;
+polyCylinder -name "LLeg3";
+scale -r 0.192055 3.872065 0.192055 ;
+move -r 0 6.015025 -3.119452 ;
+rotate -r -ws -fo 117.286962 0 0 ;
+polyCylinder -name "RAntenn";
+scale -r 0.0908078 2.6 0.0908078;
+move -r -1.10149 8.817436 0.194349;
+rotate -r -ws -fo 10.873846 0 29.277376 ;
+polyCylinder -name "LAntenn";
+scale -r 0.0908078 2.6 0.0908078;
+move -r -1.10149 8.817436 -0.194349;
+rotate -r -ws -fo -10.873846 0 29.277376 ;
+//tadaaaa!
+

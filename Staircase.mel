@@ -1,0 +1,37 @@
+//Creates a new file, for easier testing
+file -f -new;
+
+proc StairMake(int $stepNum,float $stairHi,float $stairLen,float $stairPiv, float $stepHi,float $stepRot)
+{ 
+    //Creates the "Base" stair
+    polyCube -w $stairLen -h $stepHi -d 1 -sx 1 -sy 1 -sz 1 -ax 0 1 0 -cuv 4 -ch 1;
+    move -r $stairPiv 0 0 pCube1.scalePivot pCube1.rotatePivot ;
+   
+    //Temporary rotation int, until I get calling the last obj's rotation down.
+    float $tempRot = 0;
+    //This makes each following step, 
+    for($i = 1; $i <= ($stepNum); $i++)
+    {
+        string $cubeNum = (string)$i;
+        duplicate -smartTransform;
+        move -y (($stairHi + $stepHi) * $i);
+        $tempRot = $tempRot + $stepRot;
+        rotate  -y ($tempRot + $stepRot);
+    }
+    select -r pCube1 ;
+    doDelete;
+}
+
+/*
+stepNum: Dictates how many steps the stair will contain.
+stairHi: Distance beetween each step (leave at 0 to have each step sit directly on top of the last)
+
+stairLen: Length of stairs.
+stairPiv: pivot point/ offset of each step.
+
+stepHi: How tall each step is.
+stepRot: how far each step rotates.
+
+order is: (stepNum,stairHi,stairLen,stairPiv,stepHi,stepRot)
+*/
+StairMake( 100, 0,  5, -5,  0.3, 15 );
