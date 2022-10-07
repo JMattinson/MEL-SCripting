@@ -1,0 +1,80 @@
+global proc Reset()
+{
+    file -f -new;
+}
+
+global proc SphGen()
+{
+    
+}
+
+global proc CubeGen()
+{
+    
+}
+
+global proc CyGen()
+{
+    
+}
+
+global proc ConGen()
+{
+    
+}
+
+global proc GenUI()
+{
+    string $mWindow = "ToolWindow";
+    if (`window -exists $mWindow`)
+        deleteUI $mWindow;
+        
+    
+    $mWindow = `window -title "Random Shape Generator" 
+                              -height 300 
+                              -width 400 
+                              -sizeable 1
+                              -resizeToFitChildren 1
+                              $mWindow`;
+                              
+    string $shpRow = `rowLayout -adjustableColumn 1 
+                                      -parent $mWindow`;                          
+    string $numColumn = `columnLayout -adjustableColumn 1 
+                                      -parent $mWindow`;
+    
+    text -label "X Minimum";
+    optionVar -stringValue "xMinField"  `floatField`;
+    
+    text -label "X Maximum";
+    optionVar -stringValue "xMaxField" `floatField`;
+    
+    text -label "Y Maximum";
+    optionVar -stringValue "yMaxField" `floatField`;
+    
+    text -label "Y Minimum";
+    optionVar -stringValue "yMinField" `floatField`;
+    
+    text -label "Z Maximum";
+    optionVar -stringValue "zMaxField" `floatField`;
+    
+    text -label "Y Minimum";
+    optionVar -stringValue "zMinField" `floatField`; 
+    
+    text -label "# of Shapes";
+    optionVar -stringValue "ShapeField" `intField`; 
+    
+    
+    
+    optionVar -stringValue "sphereBut" `button -label "Sphere" -command SphGen`;
+    optionVar -stringValue "cubeBut" `button -label "Cube" -command CubGen`;
+    optionVar -stringValue "cyBut" `button -label "Cylinder" -command Cygen`;
+    optionVar -stringValue "ConeBut" `button -label "Cone" -command ConGen`;
+    
+    optionVar -stringValue "Rebut" `button -label "-RESET-" -command Reset`;
+    
+    
+    
+    
+    showWindow $mWindow;
+}
+GenUI();
