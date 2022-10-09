@@ -5,22 +5,166 @@ global proc Reset()
 
 global proc SphGen()
 {
+    string $xMinField = `optionVar -q "xMinField"`;
+    float $xMin = `floatField -q -value $xMinField`;
     
+    string $xMaxField = `optionVar -q "xMaxField"`;
+    float $xMax = `floatField -q -value $xMaxField`;
+    
+    string $yMinField = `optionVar -q "yMinField"`;
+    float $yMin = `floatField -q -value $yMinField`;
+    
+    string $yMaxField = `optionVar -q "yMaxField"`;
+    float $yMax = `floatField -q -value $yMaxField`;
+    
+    string $zMinField = `optionVar -q "zMinField"`;
+    float $zMin = `floatField -q -value $zMinField`;
+    
+    string $zMaxField = `optionVar -q "zMaxField"`;
+    float $zMax = `floatField -q -value $zMaxField`;
+    
+    string $ShapeField = `optionVar -q "ShapeField"`;
+    float $shapeNum = `intField -q -value $ShapeField`;
+    
+    float $randX = 0.0;
+    float $randY = 0.0;
+    float $randZ = 0.0;
+
+    for ( $i=0; $i<$shapeNum; ++$i )
+    {
+    
+    $randX = `rand $randX $xMin $xMax`;
+    $randY = `rand $randY $yMin $yMax`;
+    $randZ = `rand $randZ $zMin $zMax`;
+    
+    polySphere;
+    move -x $randX;
+    move -y $randY;
+    move -z $randZ;
+    }
 }
 
 global proc CubeGen()
 {
+    string $xMinField = `optionVar -q "xMinField"`;
+    float $xMin = `floatField -q -value $xMinField`;
     
+    string $xMaxField = `optionVar -q "xMaxField"`;
+    float $xMax = `floatField -q -value $xMaxField`;
+    
+    string $yMinField = `optionVar -q "yMinField"`;
+    float $yMin = `floatField -q -value $yMinField`;
+    
+    string $yMaxField = `optionVar -q "yMaxField"`;
+    float $yMax = `floatField -q -value $yMaxField`;
+    
+    string $zMinField = `optionVar -q "zMinField"`;
+    float $zMin = `floatField -q -value $zMinField`;
+    
+    string $zMaxField = `optionVar -q "zMaxField"`;
+    float $zMax = `floatField -q -value $zMaxField`;
+    
+    string $ShapeField = `optionVar -q "ShapeField"`;
+    float $shapeNum = `intField -q -value $ShapeField`;
+    
+    float $randX = 0.0;
+    float $randY = 0.0;
+    float $randZ = 0.0;
+
+    for ( $i=0; $i<$shapeNum; ++$i )
+    {
+    
+    $randX = `rand $randX $xMin $xMax`;
+    $randY = `rand $randY $yMin $yMax`;
+    $randZ = `rand $randZ $zMin $zMax`;
+    
+    polyCube;
+    move -x $randX;
+    move -y $randY;
+    move -z $randZ;
+    }
 }
 
 global proc CyGen()
 {
+    string $xMinField = `optionVar -q "xMinField"`;
+    float $xMin = `floatField -q -value $xMinField`;
     
+    string $xMaxField = `optionVar -q "xMaxField"`;
+    float $xMax = `floatField -q -value $xMaxField`;
+    
+    string $yMinField = `optionVar -q "yMinField"`;
+    float $yMin = `floatField -q -value $yMinField`;
+    
+    string $yMaxField = `optionVar -q "yMaxField"`;
+    float $yMax = `floatField -q -value $yMaxField`;
+    
+    string $zMinField = `optionVar -q "zMinField"`;
+    float $zMin = `floatField -q -value $zMinField`;
+    
+    string $zMaxField = `optionVar -q "zMaxField"`;
+    float $zMax = `floatField -q -value $zMaxField`;
+    
+    string $ShapeField = `optionVar -q "ShapeField"`;
+    float $shapeNum = `intField -q -value $ShapeField`;
+    
+    float $randX = 0.0;
+    float $randY = 0.0;
+    float $randZ = 0.0;
+
+    for ( $i=0; $i<$shapeNum; ++$i )
+    {
+    
+    $randX = `rand $randX $xMin $xMax`;
+    $randY = `rand $randY $yMin $yMax`;
+    $randZ = `rand $randZ $zMin $zMax`;
+    
+    polyCylinder;
+    move -x $randX;
+    move -y $randY;
+    move -z $randZ;
+    }
 }
 
 global proc ConGen()
 {
+    string $xMinField = `optionVar -q "xMinField"`;
+    float $xMin = `floatField -q -value $xMinField`;
     
+    string $xMaxField = `optionVar -q "xMaxField"`;
+    float $xMax = `floatField -q -value $xMaxField`;
+    
+    string $yMinField = `optionVar -q "yMinField"`;
+    float $yMin = `floatField -q -value $yMinField`;
+    
+    string $yMaxField = `optionVar -q "yMaxField"`;
+    float $yMax = `floatField -q -value $yMaxField`;
+    
+    string $zMinField = `optionVar -q "zMinField"`;
+    float $zMin = `floatField -q -value $zMinField`;
+    
+    string $zMaxField = `optionVar -q "zMaxField"`;
+    float $zMax = `floatField -q -value $zMaxField`;
+    
+    string $ShapeField = `optionVar -q "ShapeField"`;
+    float $shapeNum = `intField -q -value $ShapeField`;
+    
+    float $randX = 0.0;
+    float $randY = 0.0;
+    float $randZ = 0.0;
+
+    for ( $i=0; $i<$shapeNum; ++$i )
+    {
+    
+    $randX = `rand $randX $xMin $xMax`;
+    $randY = `rand $randY $yMin $yMax`;
+    $randZ = `rand $randZ $zMin $zMax`;
+    
+    polyCone;
+    move -x $randX;
+    move -y $randY;
+    move -z $randZ;
+    }
 }
 
 global proc GenUI()
@@ -48,17 +192,20 @@ global proc GenUI()
     text -label "X Maximum";
     optionVar -stringValue "xMaxField" `floatField`;
     
-    text -label "Y Maximum";
-    optionVar -stringValue "yMaxField" `floatField`;
+
     
     text -label "Y Minimum";
     optionVar -stringValue "yMinField" `floatField`;
     
+    text -label "Y Maximum";
+    optionVar -stringValue "yMaxField" `floatField`;
+    
+    
+    text -label "Z Minimum";
+    optionVar -stringValue "zMinField" `floatField`; 
+    
     text -label "Z Maximum";
     optionVar -stringValue "zMaxField" `floatField`;
-    
-    text -label "Y Minimum";
-    optionVar -stringValue "zMinField" `floatField`; 
     
     text -label "# of Shapes";
     optionVar -stringValue "ShapeField" `intField`; 
@@ -66,8 +213,8 @@ global proc GenUI()
     
     
     optionVar -stringValue "sphereBut" `button -label "Sphere" -command SphGen`;
-    optionVar -stringValue "cubeBut" `button -label "Cube" -command CubGen`;
-    optionVar -stringValue "cyBut" `button -label "Cylinder" -command Cygen`;
+    optionVar -stringValue "cubeBut" `button -label "Cube" -command CubeGen`;
+    optionVar -stringValue "cyBut" `button -label "Cylinder" -command CyGen`;
     optionVar -stringValue "ConeBut" `button -label "Cone" -command ConGen`;
     
     optionVar -stringValue "Rebut" `button -label "-RESET-" -command Reset`;
