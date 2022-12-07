@@ -1,0 +1,11 @@
+global proc DropOff()
+{
+    setToolTo Move;
+    float $Selector[] = `manipMoveContext -q -p Move`;   
+ 
+    spaceLocator -name "manipLocator";
+    select -r manipLocator ;
+    move -r $Selector[0] $Selector[1] $Selector[2];
+}
+
+DropOff()
